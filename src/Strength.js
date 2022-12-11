@@ -1,31 +1,30 @@
 import { useState, useEffect } from "react";
 
-function Password(props) {
-  const [strength, setStrength] = useState("Weak")
+function Strength(props) {
   const {password, setButtonDisabled } = props
-
+  const [strength, setStrength] = useState("WEAK")
+  
   useEffect(()=>{
-    //console.log(password.length)
     if (password.length > 2 && password.length < 7) {
-        setStrength("Medium")
+        setStrength("MEDIUM")
         setButtonDisabled(false)
     }
     else if (password.length>6){
-        setStrength("Strong")
+        setStrength("STRONG")
         setButtonDisabled(false)
     }
     else{
-        setStrength("Weak")
+        setStrength("WEAK")
         setButtonDisabled(true)
     }
     
   },[password,setButtonDisabled])
     
   return (
-    <div className="Password">
+    <div className="Strength">
         <p>{strength} Password</p>
     </div>
   );
 }
 
-export default Password;
+export default Strength;
